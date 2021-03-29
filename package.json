@@ -1,10 +1,11 @@
 {
-  "name": "Backend for Chrome Extension",
+  "name": "Backend-for-Chrome-Extension",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js",
+    "server": "nodemon server.js"
   },
   "author": "Ravindra Meena",
   "license": "ISC",

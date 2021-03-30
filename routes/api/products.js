@@ -1,3 +1,4 @@
+const getProduct = require('./utility');
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
@@ -7,13 +8,9 @@ const fs = require('fs');
 // @access Public
 
 router.get('/products', (req, res) => {
-    const dataPath = "/products.json";
-    fs.readFile(__dirname + dataPath, 'utf8', (err, data) => {
-        if (err) {
-          throw err;
-        }
-        res.send(JSON.parse(data));
-      });
+    getProduct.then((data, error)=>{
+        res.json(data);
+    });
 })
 
 module.exports = router;

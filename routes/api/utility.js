@@ -97,8 +97,8 @@ const getProduct = new Promise((resolve, reject) => {
             };
 
             // get img url
-            item.findElement(swd.By.xpath('//img[@class="inventory_item_img"]')).then((data)=>{
-              data.getAttribute('src').then((data)=> {
+            item.findElements(swd.By.css('.inventory_item_img')).then((data)=>{
+              data[1].getAttribute('src').then((data)=> {
                   resItem.product_image = data;
                   // get product name
                   item.findElement(swd.By.css('.inventory_item_name')).then((data)=>{

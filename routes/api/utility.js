@@ -13,7 +13,16 @@ const getProduct = new Promise((resolve, reject) => {
 
     // login page
     let tabToOpen = tab.get(loginPage);
-    tabToOpen.then( () => {
+    tabToOpen
+    .then(function () {
+  
+        // Timeout to wait if connection is slow
+        let findTimeOutP =
+            tab.manage().setTimeouts({
+                implicit: 5000, // 5 seconds
+            });
+        return findTimeOutP;
+    }).then( () => {
 
         // find username input field
         let promiseUsernameBox =
@@ -61,7 +70,15 @@ const getProduct = new Promise((resolve, reject) => {
       let tab2 =
       tab.get(inventoryPage);
 
-      tab2.then(function(){
+      tab2.then(function () {
+  
+        // Timeout to wait if connection is slow
+        let findTimeOutP =
+            tab.manage().setTimeouts({
+                implicit: 5000, // 5 seconds
+            });
+        return findTimeOutP;
+    }).then(function(){
         let promiseUsernameBox =
             tab.findElements(swd.By.css(".inventory_item"));
         return promiseUsernameBox;
